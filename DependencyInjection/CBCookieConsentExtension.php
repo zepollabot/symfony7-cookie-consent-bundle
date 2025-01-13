@@ -26,7 +26,11 @@ class CBCookieConsentExtension extends Extension
         $container->setParameter('cb_cookie_consent.csrf_protection', $config['csrf_protection']);
         $container->setParameter('cb_cookie_consent.disabled_routes', $config['disabled_routes']);
 
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+    }
+    public function getAlias(): string
+    {
+        return 'cb_cookie_consent';
     }
 }
