@@ -1,7 +1,7 @@
 {
-  "name": "chanondb/symfony-cookie-consent-bundle",
+  "name": "chanondb/symfony7-cookie-consent-bundle",
   "type": "symfony-bundle",
-  "description": "Symfony bundle for implementing Cookie Consent to comply with AVG/GDPR.",
+  "description": "Symfony bundle for implementing Cookie Consent to comply with AVG/GDPR. for symfony 7",
   "license": "MIT",
   "authors": [
     {
