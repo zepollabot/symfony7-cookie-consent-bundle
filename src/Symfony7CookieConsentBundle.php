@@ -10,11 +10,14 @@ declare(strict_types=1);
 namespace Chanondb\CookieConsentBundle;
 
 use Chanondb\CookieConsentBundle\DependencyInjection\CookieConsentExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class Symfony7CookieConsentBundle extends Bundle
 {
+
+    
     public function getContainerExtension(): ?ExtensionInterface
     {
         return new CookieConsentExtension();
