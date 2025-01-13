@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the ConnectHolland CookieConsentBundle package.
- * (c) Connect Holland.
- */
-
 namespace Chanondb\CookieConsentBundle;
 
 use Chanondb\CookieConsentBundle\DependencyInjection\CookieConsentExtension;
@@ -16,12 +11,22 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class Symfony7CookieConsentBundle extends Bundle
 {
-
-    
+    /**
+     * Return the bundle's container extension.
+     */
     public function getContainerExtension(): ?ExtensionInterface
     {
-        return new CookieConsentExtension();
+        // Return an instance of the custom extension
+        if (null === $this->extension) {
+            $this->extension = new CookieConsentExtension();
+        }
+
+        return $this->extension;
     }
+
+    /**
+     * Return the bundle's root directory path.
+     */
     public function getPath(): string
     {
         return \dirname(__DIR__);

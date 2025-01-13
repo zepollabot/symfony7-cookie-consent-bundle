@@ -15,7 +15,7 @@ services:
 
   Chanondb\CookieConsentBundle\:
     resource: '../../'
-    exclude: '../../{vendor}'
+    exclude: '../../{DependencyInjection,Entity,Tests,Kernel.php}'
 
   Chanondb\CookieConsentBundle\Controller\:
     resource: '../../Controller/*'
