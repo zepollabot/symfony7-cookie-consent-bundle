@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-namespace Chanondb\CookieConsentBundle\DependencyInjection;
+declare(strict_types=1);namespace Chanondb\CookieConsentBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,15 +11,15 @@ class CookieConsentExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        // Log entry into the load method
-        dump('Entering CookieConsentExtension::load');
+        // Writing to the console
+        echo "Loading CookieConsentExtension...\n";
 
         // Process configuration
         $configuration = new Configuration();
         $processedConfig = $this->processConfiguration($configuration, $configs);
 
-        // Dump the processed configuration
-        dump('Processed Config:', $processedConfig);
+        // Log processed configuration
+        echo "Processed Config: " . print_r($processedConfig, true) . "\n";
 
         // Set parameters in the container
         $container->setParameter('cookie_consent.categories', $processedConfig['categories']);
@@ -30,26 +29,19 @@ class CookieConsentExtension extends Extension
         $container->setParameter('cookie_consent.csrf_protection', $processedConfig['csrf_protection']);
         $container->setParameter('cookie_consent.disabled_routes', $processedConfig['disabled_routes']);
 
-        // Dump the parameters to confirm they were set
-        dump('Parameters set in the container:');
-        dump($container->getParameterBag()->all());
+        // Writing parameters to the console
+        echo "Parameters set in the container:\n";
+        echo print_r($container->getParameterBag()->all(), true) . "\n";
 
-        // Load service definitions
+        // Load services.yaml
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
-        // Log that services.yaml was loaded
-        dump('Loaded services.yaml');
+        // Writing services.yaml load to console
+        echo "services.yaml loaded successfully.\n";
 
-        // Dump the container services to ensure they're registered
-        dump('Registered services:', $container->getDefinitions());
-
-        // Exit message
-        dump('Exiting CookieConsentExtension::load');
-    }
-
-    public function getAlias(): string
-    {
-        return 'cookie_consent';
+        // Dump registered services
+        echo "Registered services:\n";
+        echo print_r(array_keys($container->getDefinitions()), true) . "\n";
     }
 }
