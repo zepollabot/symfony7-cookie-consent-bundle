@@ -1,6 +1,6 @@
 # Cookie Consent bundle for Symfony
 
-Symfony bundle to append Cookie Consent to your website to comply to AVG/GDPR for cookies. This bundle is tested for Symfony 5. The style works with Bootstrap 5.
+Symfony bundle to append Cookie Consent to your website to comply to AVG/GDPR for cookies. This bundle is tested for Symfony 5. The style works with Bootstrap 5. Bassed on fatalnetwork/symfony-cookie-consent-bundle
 
 ## Installation
 
@@ -9,7 +9,7 @@ Symfony bundle to append Cookie Consent to your website to comply to AVG/GDPR fo
 In a Symfony application run this command to install Cookie Consent bundle in your application
 
 ```bash
-composer require fatalnetwork/symfony-cookie-consent-bundle
+composer require chanondb/symfony-cookie-consent-bundle
 ```
 
 In a Symfony application run this command to install Bootstrap in your application
@@ -27,17 +27,17 @@ Include the bundle to your project
 ```php
 return [
   // ...
-  FatalNetwork\CookieConsentBundle\FNCookieConsentBundle::class => ['all' => true],
+  Chanondb\CookieConsentBundle\CBCookieConsentBundle::class => ['all' => true],
   // ...
 ];
 ```
 
-#### /config/packages/fn_cookie_consent.yaml
+#### /config/packages/cb_cookie_consent.yaml
 
 Configure your Cookie Consent with the following possible settings
 
 ```yaml
-fn_cookie_consent:
+cb_cookie_consent:
   categories: # Below are the default supported categories
     - 'analytics'
     - 'marketing'
@@ -49,13 +49,13 @@ fn_cookie_consent:
   disabled_routes: ['privacy', 'imprint'] # defined controller route names where cookieConsent will not be shown by default
 ```
 
-#### /config/routes/fn_cookie_consent.yaml
+#### /config/routes/cb_cookie_consent.yaml
 
 When not using symfony flex, enable the bundles routing manually
 
 ```yaml
-fn_cookie_consent:
-  resource: '@FNCookieConsentBundle/Resources/config/routing.yaml'
+cb_cookie_consent:
+  resource: '@CBCookieConsentBundle/Resources/config/routing.yaml'
 ```
 
 ### Step 3: Assets
@@ -101,20 +101,20 @@ php bin/console doctrine:migration:migrate
 Load the cookie consent in Twig via render_esi ( to prevent caching ) at any place you like
 
 ```twig
-{{ render_esi(path('fn_cookie_consent.show', {
+{{ render_esi(path('cb_cookie_consent.show', {
     route: app.request.attributes.get('_route')
 })) }}
-{{ render_esi(path('fn_cookie_consent.show_if_cookie_consent_not_set')) }}
+{{ render_esi(path('cb_cookie_consent.show_if_cookie_consent_not_set')) }}
 ```
 
 If you want to load the cookie consent with a specific locale you can pass the locale as a parameter
 
 ```twig
-{{ render_esi(path('fn_cookie_consent.show', {
+{{ render_esi(path('cb_cookie_consent.show', {
   locale: 'en',
   route: app.request.attributes.get('_route')
 })) }}
-{{ render_esi(path('fn_cookie_consent.show_if_cookie_consent_not_set', {
+{{ render_esi(path('cb_cookie_consent.show_if_cookie_consent_not_set', {
   locale: app.request.locale
 })) }}
 ```
@@ -122,10 +122,10 @@ If you want to load the cookie consent with a specific locale you can pass the l
 Instead of using render_esi() you can use the render() function
 
 ```twig
-{{ render(path('fn_cookie_consent.show', {
+{{ render(path('cb_cookie_consent.show', {
     route: app.request.attributes.get('_route')
 })) }}
-{{ render(path('fn_cookie_consent.show_if_cookie_consent_not_set')) }}
+{{ render(path('cb_cookie_consent.show_if_cookie_consent_not_set')) }}
 ```
 
 ### Stimulus implementation
@@ -201,11 +201,11 @@ You can add or remove any category by changing the config and making sure there 
 
 ### Translations
 
-All texts can be altered via Symfony translations by overwriting the FNCookieConsentBundle translation files. Use the privacy_route variable inside language files to define the definied route names inside your controller.
+All texts can be altered via Symfony translations by overwriting the CBCookieConsentBundle translation files. Use the privacy_route variable inside language files to define the definied route names inside your controller.
 
 ### Styling
 
-FNCookieConsentBundle comes without an own styling, it is styled from bootstrap. A sass file is available in Resources/assets/css/cookie_consent.scss and a build css file is available in Resources/public/css/cookie_consent.css for customization. Each element has a unique class name, so you can change everything.
+CBCookieConsentBundle comes without an own styling, it is styled from bootstrap. A sass file is available in Resources/assets/css/cookie_consent.scss and a build css file is available in Resources/public/css/cookie_consent.css for customization. Each element has a unique class name, so you can change everything.
 
 #### Option SASS
 
@@ -220,7 +220,7 @@ Copy the file Resources/assets/css/cookie_consent.scss into your project style f
 Include the stylesheet in your template, eg. /templates/base.html.twig
 
 ```twig
-{% include "@FNCookieConsent/cookie_consent_styling.html.twig" %}
+{% include "@CBCookieConsent/cookie_consent_styling.html.twig" %}
 ```
 
 ### Javascript
@@ -247,8 +247,8 @@ document.addEventListener(
 You can override the templates by placing templates inside your project (except for Symfony 5 projects):
 
 ```twig
-# app/Resources/FNCookieConsentBundle/views/cookie_consent.html.twig
-{% extends '@!FNCookieConsent/cookie_consent.html.twig' %}
+# app/Resources/CBCookieConsentBundle/views/cookie_consent.html.twig
+{% extends '@!CBCookieConsent/cookie_consent.html.twig' %}
 
 {% block title %}
     Your custom title
@@ -257,11 +257,11 @@ You can override the templates by placing templates inside your project (except 
 
 #### Template override for Symfony 5 projects
 
-You can override the templates by placing templaces inside you project as below. Be careful, it is important to place templates at this location: "app/templates/bundles/FNCookieConsentBundle/" .
+You can override the templates by placing templaces inside you project as below. Be careful, it is important to place templates at this location: "app/templates/bundles/CBCookieConsentBundle/" .
 
 ```twig
-# app/templates/bundles/FNCookieConsentBundle/cookie_consent.html.twig
-{% extends '@!FNCookieConsent/cookie_consent.html.twig' %}
+# app/templates/bundles/CBCookieConsentBundle/cookie_consent.html.twig
+{% extends '@!CBCookieConsent/cookie_consent.html.twig' %}
 
 {% block intro %}
     Your custom intro

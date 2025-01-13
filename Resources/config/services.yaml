@@ -6,24 +6,24 @@ services:
     autoconfigure: true
     public: false
     bind:
-      $cookieCategories: '%fn_cookie_consent.categories%'
-      $useLogger: '%fn_cookie_consent.use_logger%'
-      $httpOnly: '%fn_cookie_consent.http_only%'
-      $formAction: '%fn_cookie_consent.form_action%'
-      $csrfProtection: '%fn_cookie_consent.csrf_protection%'
-      $cookieConsentDisabledRoutes: '%fn_cookie_consent.disabled_routes%'
+      $cookieCategories: '%cb_cookie_consent.categories%'
+      $useLogger: '%cb_cookie_consent.use_logger%'
+      $httpOnly: '%cb_cookie_consent.http_only%'
+      $formAction: '%cb_cookie_consent.form_action%'
+      $csrfProtection: '%cb_cookie_consent.csrf_protection%'
+      $cookieConsentDisabledRoutes: '%cb_cookie_consent.disabled_routes%'
 
-  FatalNetwork\CookieConsentBundle\:
+  Chanondb\CookieConsentBundle\:
     resource: '../../'
     exclude: '../../{vendor}'
 
-  FatalNetwork\CookieConsentBundle\Controller\:
+  Chanondb\CookieConsentBundle\Controller\:
     resource: '../../Controller/*'
     public: true
 
-  FatalNetwork\CookieConsentBundle\Cookie\CookieChecker:
+  Chanondb\CookieConsentBundle\Cookie\CookieChecker:
     arguments: ["@=service('request_stack').getCurrentRequest()"]
 
-  FatalNetwork\CookieConsentBundle\Cookie\CookieLogger:
+  Chanondb\CookieConsentBundle\Cookie\CookieLogger:
     arguments:
       $request: "@=service('request_stack').getCurrentRequest()"

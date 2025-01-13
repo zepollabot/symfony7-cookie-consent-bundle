@@ -7,10 +7,10 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Controller;
+namespace Chanondb\CookieConsentBundle\Controller;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieChecker;
-use FatalNetwork\CookieConsentBundle\Form\CookieConsentType;
+use Chanondb\CookieConsentBundle\Cookie\CookieChecker;
+use Chanondb\CookieConsentBundle\Form\CookieConsentType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,14 +78,14 @@ class CookieConsentController
     /**
      * Show cookie consent.
      *
-     * @Route("/cookie_consent", name="fn_cookie_consent.show")
+     * @Route("/cookie_consent", name="cb_cookie_consent.show")
      */
     public function show(Request $request): Response
     {
         $this->setLocale($request);
 
         $response = new Response(
-            $this->twigEnvironment->render('@FNCookieConsent/cookie_consent.html.twig', [
+            $this->twigEnvironment->render('@CBCookieConsent/cookie_consent.html.twig', [
                 'form'       => $this->createCookieConsentForm()->createView(),
                 'disabled_routes' => $this->disabledRoutes,
             ])
@@ -101,7 +101,7 @@ class CookieConsentController
     /**
      * Show cookie consent.
      *
-     * @Route("/cookie_consent_alt", name="fn_cookie_consent.show_if_cookie_consent_not_set")
+     * @Route("/cookie_consent_alt", name="cb_cookie_consent.show_if_cookie_consent_not_set")
      */
     public function showIfCookieConsentNotSet(Request $request): Response
     {

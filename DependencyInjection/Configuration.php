@@ -7,10 +7,10 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\DependencyInjection;
+namespace Chanondb\CookieConsentBundle\DependencyInjection;
 
-use FatalNetwork\CookieConsentBundle\Enum\CategoryEnum;
-use FatalNetwork\CookieConsentBundle\Enum\DisabledRoutesEnum;
+use Chanondb\CookieConsentBundle\Enum\CategoryEnum;
+use Chanondb\CookieConsentBundle\Enum\DisabledRoutesEnum;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -18,13 +18,13 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('fn_cookie_consent');
+        $treeBuilder = new TreeBuilder('cb_cookie_consent');
 
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
-            $rootNode = /* @scrutinizer ignore-deprecated */ $treeBuilder->root('fn_cookie_consent');
+            $rootNode = /* @scrutinizer ignore-deprecated */ $treeBuilder->root('cb_cookie_consent');
         }
 
         $rootNode

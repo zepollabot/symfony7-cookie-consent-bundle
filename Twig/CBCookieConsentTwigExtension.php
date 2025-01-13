@@ -7,14 +7,14 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Twig;
+namespace Chanondb\CookieConsentBundle\Twig;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieChecker;
+use Chanondb\CookieConsentBundle\Cookie\CookieChecker;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class FNCookieConsentTwigExtension extends AbstractExtension
+class CBCookieConsentTwigExtension extends AbstractExtension
 {
     /**
      * Register all custom twig functions.

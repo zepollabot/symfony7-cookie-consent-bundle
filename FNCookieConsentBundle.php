@@ -7,10 +7,10 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle;
+namespace Chanondb\CookieConsentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class FNCookieConsentBundle extends Bundle
+class CBCookieConsentBundle extends Bundle
 {
 }

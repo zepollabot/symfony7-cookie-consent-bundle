@@ -7,10 +7,10 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\Cookie;
+namespace Chanondb\CookieConsentBundle\Tests\Cookie;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieLogger;
-use FatalNetwork\CookieConsentBundle\Entity\CookieConsentLog;
+use Chanondb\CookieConsentBundle\Cookie\CookieLogger;
+use Chanondb\CookieConsentBundle\Entity\CookieConsentLog;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;

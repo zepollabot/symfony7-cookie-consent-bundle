@@ -1,4 +1,4 @@
-fn_cookie_consent:
+cb_cookie_consent:
   title: 'Cookie settings'
   intro: 'We are using cookies'
   read_more: 'go to privacy information'

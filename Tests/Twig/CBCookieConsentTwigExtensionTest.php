@@ -7,23 +7,23 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\Twig;
+namespace Chanondb\CookieConsentBundle\Tests\Twig;
 
-use FatalNetwork\CookieConsentBundle\Twig\FNCookieConsentTwigExtension;
+use Chanondb\CookieConsentBundle\Twig\CBCookieConsentTwigExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\AppVariable;
 use Symfony\Component\HttpFoundation\Request;
 
-class FNCookieConsentTwigExtensionTest extends TestCase
+class CBCookieConsentTwigExtensionTest extends TestCase
 {
     /**
-     * @var FNCookieConsentTwigExtension
+     * @var CBCookieConsentTwigExtension
      */
     private $fnCookieConsentTwigExtension;
 
     public function setUp(): void
     {
-        $this->fnCookieConsentTwigExtension = new FNCookieConsentTwigExtension();
+        $this->fnCookieConsentTwigExtension = new CBCookieConsentTwigExtension();
     }
 
     public function testGetFunctions(): void

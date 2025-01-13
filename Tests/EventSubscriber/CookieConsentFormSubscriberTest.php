@@ -7,12 +7,12 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\EventSubscriber;
+namespace Chanondb\CookieConsentBundle\Tests\EventSubscriber;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieHandler;
-use FatalNetwork\CookieConsentBundle\Cookie\CookieLogger;
-use FatalNetwork\CookieConsentBundle\EventSubscriber\CookieConsentFormSubscriber;
-use FatalNetwork\CookieConsentBundle\Form\CookieConsentType;
+use Chanondb\CookieConsentBundle\Cookie\CookieHandler;
+use Chanondb\CookieConsentBundle\Cookie\CookieLogger;
+use Chanondb\CookieConsentBundle\EventSubscriber\CookieConsentFormSubscriber;
+use Chanondb\CookieConsentBundle\Form\CookieConsentType;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormFactoryInterface;

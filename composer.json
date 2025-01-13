@@ -1,13 +1,20 @@
 {
-  "name": "fatalnetwork/symfony-cookie-consent-bundle",
+  "name": "chanondb/symfony-cookie-consent-bundle",
   "type": "symfony-bundle",
-  "description": "Symfony bundle for implementing Cookie Consent to comply to AVG/GDPR.",
+  "description": "Symfony bundle for implementing Cookie Consent to comply with AVG/GDPR.",
   "license": "MIT",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/chanondb/symfony-cookie-consent-bundle"
+    }
+  ],
   "require": {
     "php": ">=7.2",
-    "doctrine/annotations": "^1.6",
-    "doctrine/doctrine-bundle": "^1.10 || ^2.0",
-    "doctrine/orm": "^2.5",
+    "doctrine/dbal": "^3",
+    "doctrine/doctrine-bundle": "^2.12",
+    "doctrine/doctrine-migrations-bundle": "^3.3",
+    "doctrine/orm": "^3.2",
     "symfony/asset": "^3.4 || ^4.2 || ^5.0 || ^6.0",
     "symfony/dependency-injection": "^3.4 || ^4.2 || ^5.0 || ^6.0",
     "symfony/doctrine-bridge": "^3.4 || ^4.2 || ^5.0 || ^6.0",
@@ -22,9 +29,9 @@
     "twig/twig": "^2.6 || ^3.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.14",
-    "phpunit/phpunit": "^7.5",
-    "symfony/yaml": "^3.4 || ^4.2 || ^5.0 || ^6.0"
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "phpunit/phpunit": "^9.5",
+    "symfony/yaml": "^4.4 || ^5.0 || ^6.0"
   },
   "prefer-stable": true,
   "autoload": {
@@ -32,17 +39,17 @@
       "/Tests/"
     ],
     "psr-4": {
-      "FatalNetwork\\CookieConsentBundle\\": ""
+      "Chanondb\\CookieConsentBundle\\": ""
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "FatalNetwork\\CookieConsentBundle\\Tests\\": "/Tests"
+      "Chanondb\\CookieConsentBundle\\Tests\\": "/Tests"
     }
   },
   "config": {
     "platform": {
-      "php": "7.4"
+      "php": "8.1"
     },
     "sort-packages": true
   }

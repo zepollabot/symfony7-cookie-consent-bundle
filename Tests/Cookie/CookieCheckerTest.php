@@ -7,9 +7,9 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\Cookie;
+namespace Chanondb\CookieConsentBundle\Tests\Cookie;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieChecker;
+use Chanondb\CookieConsentBundle\Cookie\CookieChecker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;

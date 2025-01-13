@@ -7,10 +7,10 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\Form;
+namespace Chanondb\CookieConsentBundle\Tests\Form;
 
-use FatalNetwork\CookieConsentBundle\Cookie\CookieChecker;
-use FatalNetwork\CookieConsentBundle\Form\CookieConsentType;
+use Chanondb\CookieConsentBundle\Cookie\CookieChecker;
+use Chanondb\CookieConsentBundle\Form\CookieConsentType;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;

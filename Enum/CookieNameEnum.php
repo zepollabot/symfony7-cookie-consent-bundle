@@ -7,7 +7,7 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Enum;
+namespace Chanondb\CookieConsentBundle\Enum;
 
 class CookieNameEnum
 {

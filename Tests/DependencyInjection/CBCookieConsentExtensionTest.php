@@ -7,17 +7,17 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Tests\DependencyInjection;
+namespace Chanondb\CookieConsentBundle\Tests\DependencyInjection;
 
-use FatalNetwork\CookieConsentBundle\DependencyInjection\FNCookieConsentExtension;
+use Chanondb\CookieConsentBundle\DependencyInjection\CBCookieConsentExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Yaml\Parser;
 
-class FNCookieConsentExtensionTest extends TestCase
+class CBCookieConsentExtensionTest extends TestCase
 {
     /**
-     * @var FNCookieConsentExtension
+     * @var CBCookieConsentExtension
      */
     private $fnCookieConsentExtension;
 
@@ -28,7 +28,7 @@ class FNCookieConsentExtensionTest extends TestCase
 
     public function setUp(): void
     {
-        $this->fnCookieConsentExtension = new FNCookieConsentExtension();
+        $this->fnCookieConsentExtension = new CBCookieConsentExtension();
         $this->configuration            = new ContainerBuilder();
     }
 
@@ -36,7 +36,7 @@ class FNCookieConsentExtensionTest extends TestCase
     {
         $this->createConfiguration($this->getFullConfig());
 
-        $this->assertParameter(['analytics', 'marketing', 'preferences'], 'fn_cookie_consent.categories');
+        $this->assertParameter(['analytics', 'marketing', 'preferences'], 'cb_cookie_consent.categories');
     }
 
     /**

@@ -7,9 +7,9 @@ declare(strict_types=1);
  * (c) Connect Holland.
  */
 
-namespace FatalNetwork\CookieConsentBundle\Cookie;
+namespace Chanondb\CookieConsentBundle\Cookie;
 
-use FatalNetwork\CookieConsentBundle\Enum\CookieNameEnum;
+use Chanondb\CookieConsentBundle\Enum\CookieNameEnum;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 
