@@ -1,0 +1,8 @@
+{
+    "bundles": {
+        "Chanondb\\CookieConsentBundle\\Symfony7CookieConsentBundle": ["all"]
+    },
+    "copy-from-package": {
+        "config/": "%CONFIG_DIR%/"
+    }
+}

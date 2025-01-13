@@ -1,0 +1,12 @@
+cookie_consent:
+    categories:
+        - necessary
+        - preferences
+        - analytics
+    use_logger: true
+    http_only: true
+    form_action: null
+    csrf_protection: true
+    disabled_routes:
+        - privacy
+        - imprint
