@@ -11,6 +11,6 @@ namespace Chanondb\CookieConsentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CBCookieConsentBundle extends Bundle
+class CookieConsentBundle extends Bundle
 {
 }
