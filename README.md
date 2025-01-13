@@ -27,7 +27,7 @@ Include the bundle to your project
 ```php
 return [
   // ...
-  Chanondb\CookieConsentBundle\CBCookieConsentBundle::class => ['all' => true],
+  Chanondb\CookieConsentBundle\CookieConsentBundle::class => ['all' => true],
   // ...
 ];
 ```
@@ -55,7 +55,7 @@ When not using symfony flex, enable the bundles routing manually
 
 ```yaml
 cb_cookie_consent:
-  resource: '@CBCookieConsentBundle/Resources/config/routing.yaml'
+  resource: '@CookieConsentBundle/Resources/config/routing.yaml'
 ```
 
 ### Step 3: Assets
@@ -201,11 +201,11 @@ You can add or remove any category by changing the config and making sure there 
 
 ### Translations
 
-All texts can be altered via Symfony translations by overwriting the CBCookieConsentBundle translation files. Use the privacy_route variable inside language files to define the definied route names inside your controller.
+All texts can be altered via Symfony translations by overwriting the CookieConsentBundle translation files. Use the privacy_route variable inside language files to define the definied route names inside your controller.
 
 ### Styling
 
-CBCookieConsentBundle comes without an own styling, it is styled from bootstrap. A sass file is available in Resources/assets/css/cookie_consent.scss and a build css file is available in Resources/public/css/cookie_consent.css for customization. Each element has a unique class name, so you can change everything.
+CookieConsentBundle comes without an own styling, it is styled from bootstrap. A sass file is available in Resources/assets/css/cookie_consent.scss and a build css file is available in Resources/public/css/cookie_consent.css for customization. Each element has a unique class name, so you can change everything.
 
 #### Option SASS
 
@@ -220,7 +220,7 @@ Copy the file Resources/assets/css/cookie_consent.scss into your project style f
 Include the stylesheet in your template, eg. /templates/base.html.twig
 
 ```twig
-{% include "@CBCookieConsent/cookie_consent_styling.html.twig" %}
+{% include "@CookieConsent/cookie_consent_styling.html.twig" %}
 ```
 
 ### Javascript
@@ -247,8 +247,8 @@ document.addEventListener(
 You can override the templates by placing templates inside your project (except for Symfony 5 projects):
 
 ```twig
-# app/Resources/CBCookieConsentBundle/views/cookie_consent.html.twig
-{% extends '@!CBCookieConsent/cookie_consent.html.twig' %}
+# app/Resources/CookieConsentBundle/views/cookie_consent.html.twig
+{% extends '@!CookieConsent/cookie_consent.html.twig' %}
 
 {% block title %}
     Your custom title
@@ -257,11 +257,11 @@ You can override the templates by placing templates inside your project (except 
 
 #### Template override for Symfony 5 projects
 
-You can override the templates by placing templaces inside you project as below. Be careful, it is important to place templates at this location: "app/templates/bundles/CBCookieConsentBundle/" .
+You can override the templates by placing templaces inside you project as below. Be careful, it is important to place templates at this location: "app/templates/bundles/CookieConsentBundle/" .
 
 ```twig
-# app/templates/bundles/CBCookieConsentBundle/cookie_consent.html.twig
-{% extends '@!CBCookieConsent/cookie_consent.html.twig' %}
+# app/templates/bundles/CookieConsentBundle/cookie_consent.html.twig
+{% extends '@!CookieConsent/cookie_consent.html.twig' %}
 
 {% block intro %}
     Your custom intro

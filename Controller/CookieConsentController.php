@@ -49,7 +49,7 @@ class CookieConsentController
         $this->setLocale($request);
 
         $response = new Response(
-            $this->twigEnvironment->render('@CBCookieConsent/cookie_consent.html.twig', [
+            $this->twigEnvironment->render('@CookieConsent/cookie_consent.html.twig', [
                 'form' => $this->createCookieConsentForm()->createView(),
                 'disabled_routes' => $this->disabledRoutes,
             ])

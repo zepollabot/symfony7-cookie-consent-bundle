@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Chanondb\CookieConsentBundle\Tests\DependencyInjection;
 
-use Chanondb\CookieConsentBundle\DependencyInjection\CBCookieConsentExtension;
+use Chanondb\CookieConsentBundle\DependencyInjection\CookieConsentExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Yaml\Parser;
 
-class CBCookieConsentExtensionTest extends TestCase
+class CookieConsentExtensionTest extends TestCase
 {
     /**
-     * @var CBCookieConsentExtension
+     * @var CookieConsentExtension
      */
     private $fnCookieConsentExtension;
 
@@ -28,7 +28,7 @@ class CBCookieConsentExtensionTest extends TestCase
 
     public function setUp(): void
     {
-        $this->fnCookieConsentExtension = new CBCookieConsentExtension();
+        $this->fnCookieConsentExtension = new CookieConsentExtension();
         $this->configuration            = new ContainerBuilder();
     }
 

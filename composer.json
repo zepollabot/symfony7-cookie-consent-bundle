@@ -12,7 +12,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/chanondb/symfony-cookie-consent-bundle"
+      "url": "https://github.com/chanondb/symfony7-cookie-consent-bundle"
     }
   ],
   "require": {

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class CBCookieConsentTwigExtension extends AbstractExtension
+class CookieConsentTwigExtension extends AbstractExtension
 {
     /**
      * Register all custom twig functions.

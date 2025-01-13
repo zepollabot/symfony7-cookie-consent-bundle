@@ -1,4 +1,4 @@
-{% form_theme form '@CBCookieConsent/form/cookie_consent_theme.html.twig' %}
+{% form_theme form '@CookieConsent/form/cookie_consent_theme.html.twig' %}
 
 {% block script %}
     <script type="text/javascript" src="{{ asset('bundles/cbcookieconsent/js/cookie_consent.js') }}"></script>
@@ -9,19 +9,19 @@
         <div class="modal-content">
             {% block title %}
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold cb-cookie-consent__title">{{ 'cb_cookie_consent.title'|trans({}, 'CBCookieConsentBundle') }}</h5>
+                    <h5 class="modal-title fw-bold cb-cookie-consent__title">{{ 'cb_cookie_consent.title'|trans({}, 'CookieConsentBundle') }}</h5>
                 </div>
             {% endblock %}
             <div class="modal-body">
                 {% block intro %}
-                    <p class="cb-cookie-consent__intro">{{ 'cb_cookie_consent.intro'|trans({}, 'CBCookieConsentBundle') }}</p>
+                    <p class="cb-cookie-consent__intro">{{ 'cb_cookie_consent.intro'|trans({}, 'CookieConsentBundle') }}</p>
                 {% endblock %}
 
                 {% block read_more %}
-                    {% if 'cb_cookie_consent.privacy_route'|trans({}, 'CBCookieConsentBundle') %}
-                        <a class="btn btn-link text-decoration-none cb-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cb_cookie_consent.privacy_route'|trans({}, 'CBCookieConsentBundle')) }}{% endblock %}">{{ 'cb_cookie_consent.read_more'|trans({}, 'CBCookieConsentBundle') }}</a>
+                    {% if 'cb_cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle') %}
+                        <a class="btn btn-link text-decoration-none cb-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cb_cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle')) }}{% endblock %}">{{ 'cb_cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</a>
                     {% else %}
-                        <p>{{ 'cb_cookie_consent.read_more'|trans({}, 'CBCookieConsentBundle') }}</p>
+                        <p>{{ 'cb_cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</p>
                     {% endif %}
                 {% endblock %}
 

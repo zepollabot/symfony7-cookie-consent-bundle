@@ -9,21 +9,21 @@ declare(strict_types=1);
 
 namespace Chanondb\CookieConsentBundle\Tests\Twig;
 
-use Chanondb\CookieConsentBundle\Twig\CBCookieConsentTwigExtension;
+use Chanondb\CookieConsentBundle\Twig\CookieConsentTwigExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Twig\AppVariable;
 use Symfony\Component\HttpFoundation\Request;
 
-class CBCookieConsentTwigExtensionTest extends TestCase
+class CookieConsentTwigExtensionTest extends TestCase
 {
     /**
-     * @var CBCookieConsentTwigExtension
+     * @var CookieConsentTwigExtension
      */
     private $fnCookieConsentTwigExtension;
 
     public function setUp(): void
     {
-        $this->fnCookieConsentTwigExtension = new CBCookieConsentTwigExtension();
+        $this->fnCookieConsentTwigExtension = new CookieConsentTwigExtension();
     }
 
     public function testGetFunctions(): void
