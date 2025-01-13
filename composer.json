@@ -3,6 +3,12 @@
   "type": "symfony-bundle",
   "description": "Symfony bundle for implementing Cookie Consent to comply with AVG/GDPR.",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Chanond buranabunpot",
+      "email": "chanond.b@app-alive.com"
+    }
+  ],
   "repositories": [
     {
       "type": "vcs",
