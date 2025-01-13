@@ -18,13 +18,13 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('cb_cookie_consent');
+        $treeBuilder = new TreeBuilder('cookie_consent');
 
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
-            $rootNode = /* @scrutinizer ignore-deprecated */ $treeBuilder->root('cb_cookie_consent');
+            $rootNode = /* @scrutinizer ignore-deprecated */ $treeBuilder->root('cookie_consent');
         }
 
         $rootNode
