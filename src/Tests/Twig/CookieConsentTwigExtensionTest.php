@@ -19,16 +19,16 @@ class CookieConsentTwigExtensionTest extends TestCase
     /**
      * @var CookieConsentTwigExtension
      */
-    private $fnCookieConsentTwigExtension;
+    private $cookieConsentTwigExtension;
 
     public function setUp(): void
     {
-        $this->fnCookieConsentTwigExtension = new CookieConsentTwigExtension();
+        $this->cookieConsentTwigExtension = new CookieConsentTwigExtension();
     }
 
     public function testGetFunctions(): void
     {
-        $functions = $this->fnCookieConsentTwigExtension->getFunctions();
+        $functions = $this->cookieConsentTwigExtension->getFunctions();
 
         $this->assertCount(2, $functions);
         $this->assertSame('cbcookieconsent_isCookieConsentSavedByUser', $functions[0]->getName());
@@ -46,7 +46,7 @@ class CookieConsentTwigExtensionTest extends TestCase
             ->wilLReturn($request);
 
         $context = ['app' => $appVariable];
-        $result  = $this->fnCookieConsentTwigExtension->isCookieConsentSavedByUser($context);
+        $result  = $this->cookieConsentTwigExtension->isCookieConsentSavedByUser($context);
 
         $this->assertSame($result, false);
     }
@@ -62,7 +62,7 @@ class CookieConsentTwigExtensionTest extends TestCase
             ->wilLReturn($request);
 
         $context = ['app' => $appVariable];
-        $result  = $this->fnCookieConsentTwigExtension->isCategoryAllowedByUser($context, 'analytics');
+        $result  = $this->cookieConsentTwigExtension->isCategoryAllowedByUser($context, 'analytics');
 
         $this->assertSame($result, false);
     }

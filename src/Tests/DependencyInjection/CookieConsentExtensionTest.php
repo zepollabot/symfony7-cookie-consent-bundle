@@ -19,7 +19,7 @@ class CookieConsentExtensionTest extends TestCase
     /**
      * @var CookieConsentExtension
      */
-    private $fnCookieConsentExtension;
+    private $cookieConsentExtension;
 
     /**
      * @var ContainerBuilder
@@ -28,7 +28,7 @@ class CookieConsentExtensionTest extends TestCase
 
     public function setUp(): void
     {
-        $this->fnCookieConsentExtension = new CookieConsentExtension();
+        $this->cookieConsentExtension = new CookieConsentExtension();
         $this->configuration            = new ContainerBuilder();
     }
 
@@ -52,7 +52,7 @@ class CookieConsentExtensionTest extends TestCase
      */
     protected function createConfiguration(array $config): void
     {
-        $this->fnCookieConsentExtension->load([$config], $this->configuration);
+        $this->cookieConsentExtension->load([$config], $this->configuration);
 
         $this->assertTrue($this->configuration instanceof ContainerBuilder);
     }
