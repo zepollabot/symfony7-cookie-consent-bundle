@@ -1,4 +1,4 @@
-cb_cookie_consent:
+cookie_consent:
   title: 'Cookie Einstellungen'
   intro: 'Wir verwenden Cookies'
   read_more: 'Link zu unseren Datenschutzbestimmungen'

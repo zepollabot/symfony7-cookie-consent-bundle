@@ -32,12 +32,12 @@ return [
 ];
 ```
 
-#### /config/packages/cb_cookie_consent.yaml
+#### /config/packages/cookie_consent.yaml
 
 Configure your Cookie Consent with the following possible settings
 
 ```yaml
-cb_cookie_consent:
+cookie_consent:
   categories: # Below are the default supported categories
     - 'analytics'
     - 'marketing'
@@ -49,12 +49,12 @@ cb_cookie_consent:
   disabled_routes: ['privacy', 'imprint'] # defined controller route names where cookieConsent will not be shown by default
 ```
 
-#### /config/routes/cb_cookie_consent.yaml
+#### /config/routes/cookie_consent.yaml
 
 When not using symfony flex, enable the bundles routing manually
 
 ```yaml
-cb_cookie_consent:
+cookie_consent:
   resource: '@CookieConsentBundle/Resources/config/routing.yaml'
 ```
 
@@ -101,20 +101,20 @@ php bin/console doctrine:migration:migrate
 Load the cookie consent in Twig via render_esi ( to prevent caching ) at any place you like
 
 ```twig
-{{ render_esi(path('cb_cookie_consent.show', {
+{{ render_esi(path('cookie_consent.show', {
     route: app.request.attributes.get('_route')
 })) }}
-{{ render_esi(path('cb_cookie_consent.show_if_cookie_consent_not_set')) }}
+{{ render_esi(path('cookie_consent.show_if_cookie_consent_not_set')) }}
 ```
 
 If you want to load the cookie consent with a specific locale you can pass the locale as a parameter
 
 ```twig
-{{ render_esi(path('cb_cookie_consent.show', {
+{{ render_esi(path('cookie_consent.show', {
   locale: 'en',
   route: app.request.attributes.get('_route')
 })) }}
-{{ render_esi(path('cb_cookie_consent.show_if_cookie_consent_not_set', {
+{{ render_esi(path('cookie_consent.show_if_cookie_consent_not_set', {
   locale: app.request.locale
 })) }}
 ```
@@ -122,10 +122,10 @@ If you want to load the cookie consent with a specific locale you can pass the l
 Instead of using render_esi() you can use the render() function
 
 ```twig
-{{ render(path('cb_cookie_consent.show', {
+{{ render(path('cookie_consent.show', {
     route: app.request.attributes.get('_route')
 })) }}
-{{ render(path('cb_cookie_consent.show_if_cookie_consent_not_set')) }}
+{{ render(path('cookie_consent.show_if_cookie_consent_not_set')) }}
 ```
 
 ### Stimulus implementation

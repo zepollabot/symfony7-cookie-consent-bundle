@@ -36,7 +36,7 @@ class CookieConsentExtensionTest extends TestCase
     {
         $this->createConfiguration($this->getFullConfig());
 
-        $this->assertParameter(['analytics', 'marketing', 'preferences'], 'cb_cookie_consent.categories');
+        $this->assertParameter(['analytics', 'marketing', 'preferences'], 'cookie_consent.categories');
     }
 
     /**

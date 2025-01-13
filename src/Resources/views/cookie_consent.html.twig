@@ -9,19 +9,19 @@
         <div class="modal-content">
             {% block title %}
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold cb-cookie-consent__title">{{ 'cb_cookie_consent.title'|trans({}, 'CookieConsentBundle') }}</h5>
+                    <h5 class="modal-title fw-bold cb-cookie-consent__title">{{ 'cookie_consent.title'|trans({}, 'CookieConsentBundle') }}</h5>
                 </div>
             {% endblock %}
             <div class="modal-body">
                 {% block intro %}
-                    <p class="cb-cookie-consent__intro">{{ 'cb_cookie_consent.intro'|trans({}, 'CookieConsentBundle') }}</p>
+                    <p class="cb-cookie-consent__intro">{{ 'cookie_consent.intro'|trans({}, 'CookieConsentBundle') }}</p>
                 {% endblock %}
 
                 {% block read_more %}
-                    {% if 'cb_cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle') %}
-                        <a class="btn btn-link text-decoration-none cb-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cb_cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle')) }}{% endblock %}">{{ 'cb_cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</a>
+                    {% if 'cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle') %}
+                        <a class="btn btn-link text-decoration-none cb-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cookie_consent.privacy_route'|trans({}, 'CookieConsentBundle')) }}{% endblock %}">{{ 'cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</a>
                     {% else %}
-                        <p>{{ 'cb_cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</p>
+                        <p>{{ 'cookie_consent.read_more'|trans({}, 'CookieConsentBundle') }}</p>
                     {% endif %}
                 {% endblock %}
 

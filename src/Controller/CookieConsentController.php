@@ -43,7 +43,7 @@ class CookieConsentController
         $this->disabledRoutes = $cookieConsentDisabledRoutes;
     }
 
-    #[Route('/cookie_consent', name: 'cb_cookie_consent.show')]
+    #[Route('/cookie_consent', name: 'cookie_consent.show')]
     public function show(Request $request): Response
     {
         $this->setLocale($request);
@@ -62,7 +62,7 @@ class CookieConsentController
         return $response;
     }
 
-    #[Route('/cookie_consent_alt', name: 'cb_cookie_consent.show_if_cookie_consent_not_set')]
+    #[Route('/cookie_consent_alt', name: 'cookie_consent.show_if_cookie_consent_not_set')]
     public function showIfCookieConsentNotSet(Request $request): Response
     {
         if ($this->cookieChecker->isCookieConsentSavedByUser() === false) {

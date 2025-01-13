@@ -6,12 +6,12 @@ services:
     autoconfigure: true
     public: false
     bind:
-      $cookieCategories: '%cb_cookie_consent.categories%'
-      $useLogger: '%cb_cookie_consent.use_logger%'
-      $httpOnly: '%cb_cookie_consent.http_only%'
-      $formAction: '%cb_cookie_consent.form_action%'
-      $csrfProtection: '%cb_cookie_consent.csrf_protection%'
-      $cookieConsentDisabledRoutes: '%cb_cookie_consent.disabled_routes%'
+      $cookieCategories: '%cookie_consent.categories%'
+      $useLogger: '%cookie_consent.use_logger%'
+      $httpOnly: '%cookie_consent.http_only%'
+      $formAction: '%cookie_consent.form_action%'
+      $csrfProtection: '%cookie_consent.csrf_protection%'
+      $cookieConsentDisabledRoutes: '%cookie_consent.disabled_routes%'
 
   Chanondb\CookieConsentBundle\:
     resource: '../../'
