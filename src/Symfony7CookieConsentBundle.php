@@ -22,4 +22,8 @@ class Symfony7CookieConsentBundle extends Bundle
     {
         return new CookieConsentExtension();
     }
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }
