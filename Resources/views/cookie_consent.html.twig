@@ -1,10 +1,10 @@
 {% form_theme form '@CBCookieConsent/form/cookie_consent_theme.html.twig' %}
 
 {% block script %}
-    <script type="text/javascript" src="{{ asset('bundles/fncookieconsent/js/cookie_consent.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/cbcookieconsent/js/cookie_consent.js') }}"></script>
 {% endblock %}
 
-<div id="cookieconsent" class="modal cb-cookie-consent" tabindex="-1" data-cb-open="{{ fncookieconsent_isCookieConsentOpenByDefault(app.request.get('route'), disabled_routes) }}" {{ stimulus_target('cookie_consent_modal', 'open') }}>
+<div id="cookieconsent" class="modal cb-cookie-consent" tabindex="-1" data-cb-open="{{ cbcookieconsent_isCookieConsentOpenByDefault(app.request.get('route'), disabled_routes) }}" {{ stimulus_target('cookie_consent_modal', 'open') }}>
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             {% block title %}

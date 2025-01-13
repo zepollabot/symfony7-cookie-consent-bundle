@@ -31,8 +31,8 @@ class CBCookieConsentTwigExtensionTest extends TestCase
         $functions = $this->fnCookieConsentTwigExtension->getFunctions();
 
         $this->assertCount(2, $functions);
-        $this->assertSame('fncookieconsent_isCookieConsentSavedByUser', $functions[0]->getName());
-        $this->assertSame('fncookieconsent_isCategoryAllowedByUser', $functions[1]->getName());
+        $this->assertSame('cbcookieconsent_isCookieConsentSavedByUser', $functions[0]->getName());
+        $this->assertSame('cbcookieconsent_isCategoryAllowedByUser', $functions[1]->getName());
     }
 
     public function testIsCookieConsentSavedByUser(): void

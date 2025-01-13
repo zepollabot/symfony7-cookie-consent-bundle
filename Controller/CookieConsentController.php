@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the ConnectHolland CookieConsentBundle package.
- * (c) Connect Holland.
- */
-
 namespace Chanondb\CookieConsentBundle\Controller;
 
 use Chanondb\CookieConsentBundle\Cookie\CookieChecker;
@@ -22,40 +17,13 @@ use Twig\Environment;
 
 class CookieConsentController
 {
-    /**
-     * @var Environment
-     */
-    private $twigEnvironment;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var CookieChecker
-     */
-    private $cookieChecker;
-
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
-     * @var string|null
-     */
-    private $formAction;
-
-    /**
-     * @var array
-     */
-    private $disabledRoutes;
+    private Environment $twigEnvironment;
+    private FormFactoryInterface $formFactory;
+    private CookieChecker $cookieChecker;
+    private RouterInterface $router;
+    private TranslatorInterface $translator;
+    private ?string $formAction;
+    private array $disabledRoutes;
 
     public function __construct(
         Environment $twigEnvironment,
@@ -63,30 +31,26 @@ class CookieConsentController
         CookieChecker $cookieChecker,
         RouterInterface $router,
         TranslatorInterface $translator,
-        string $formAction = null,
+        ?string $formAction = null,
         array $cookieConsentDisabledRoutes = []
     ) {
-        $this->twigEnvironment         = $twigEnvironment;
-        $this->formFactory             = $formFactory;
-        $this->cookieChecker           = $cookieChecker;
-        $this->router                  = $router;
-        $this->translator              = $translator;
-        $this->formAction              = $formAction;
-        $this->disabledRoutes          = $cookieConsentDisabledRoutes;
+        $this->twigEnvironment = $twigEnvironment;
+        $this->formFactory = $formFactory;
+        $this->cookieChecker = $cookieChecker;
+        $this->router = $router;
+        $this->translator = $translator;
+        $this->formAction = $formAction;
+        $this->disabledRoutes = $cookieConsentDisabledRoutes;
     }
 
-    /**
-     * Show cookie consent.
-     *
-     * @Route("/cookie_consent", name="cb_cookie_consent.show")
-     */
+    #[Route('/cookie_consent', name: 'cb_cookie_consent.show')]
     public function show(Request $request): Response
     {
         $this->setLocale($request);
 
         $response = new Response(
             $this->twigEnvironment->render('@CBCookieConsent/cookie_consent.html.twig', [
-                'form'       => $this->createCookieConsentForm()->createView(),
+                'form' => $this->createCookieConsentForm()->createView(),
                 'disabled_routes' => $this->disabledRoutes,
             ])
         );
@@ -98,11 +62,7 @@ class CookieConsentController
         return $response;
     }
 
-    /**
-     * Show cookie consent.
-     *
-     * @Route("/cookie_consent_alt", name="cb_cookie_consent.show_if_cookie_consent_not_set")
-     */
+    #[Route('/cookie_consent_alt', name: 'cb_cookie_consent.show_if_cookie_consent_not_set')]
     public function showIfCookieConsentNotSet(Request $request): Response
     {
         if ($this->cookieChecker->isCookieConsentSavedByUser() === false) {
@@ -112,33 +72,23 @@ class CookieConsentController
         return new Response();
     }
 
-    /**
-     * Create cookie consent form.
-     */
     protected function createCookieConsentForm(): FormInterface
     {
         if ($this->formAction === null) {
-            $form = $this->formFactory->create(CookieConsentType::class);
-        } else {
-            $form = $this->formFactory->create(
-                CookieConsentType::class,
-                null,
-                [
-                    'action' => $this->router->generate($this->formAction),
-                ]
-            );
+            return $this->formFactory->create(CookieConsentType::class);
         }
 
-        return $form;
+        return $this->formFactory->create(
+            CookieConsentType::class,
+            null,
+            ['action' => $this->router->generate($this->formAction)]
+        );
     }
 
-    /**
-     * Set locale if available as GET parameter.
-     */
-    protected function setLocale(Request $request)
+    protected function setLocale(Request $request): void
     {
         $locale = $request->get('locale');
-        if (empty($locale) === false) {
+        if (!empty($locale)) {
             $this->translator->setLocale($locale);
             $request->setLocale($locale);
         }

@@ -25,17 +25,17 @@ class CBCookieConsentTwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction(
-                'fncookieconsent_isCookieConsentSavedByUser',
+                'cbcookieconsent_isCookieConsentSavedByUser',
                 [$this, 'isCookieConsentSavedByUser'],
                 ['needs_context' => true]
             ),
             new TwigFunction(
-                'fncookieconsent_isCategoryAllowedByUser',
+                'cbcookieconsent_isCategoryAllowedByUser',
                 [$this, 'isCategoryAllowedByUser'],
                 ['needs_context' => true]
             ),
             new TwigFunction(
-                'fncookieconsent_isCookieConsentOpenByDefault',
+                'cbcookieconsent_isCookieConsentOpenByDefault',
                 [$this, 'isCookieConsentOpenByDefault'],
                 ['needs_context' => true]
             ),

@@ -166,29 +166,29 @@ AVG/GDPR requires all given cookie preferences of users to be explainable by the
 
 The following TwigExtension functions are available
 
-**fncookieconsent_isCategoryAllowedByUser**
+**cbcookieconsent_isCategoryAllowedByUser**
 check if user has given it's permission for certain cookie categories (return bool)
 
 ```twig
-{% if fncookieconsent_isCategoryAllowedByUser('analytics') == true %}
+{% if cbcookieconsent_isCategoryAllowedByUser('analytics') == true %}
     ...
 {% endif %}
 ```
 
-**fncookieconsent_isCookieConsentSavedByUser**
+**cbcookieconsent_isCookieConsentSavedByUser**
 check if user has saved any cookie preferences (return bool)
 
 ```twig
-{% if fncookieconsent_isCookieConsentSavedByUser() == true %}
+{% if cbcookieconsent_isCookieConsentSavedByUser() == true %}
     ...
 {% endif %}
 ```
 
-**fncookieconsent_isCookieConsentOpenByDefault**
+**cbcookieconsent_isCookieConsentOpenByDefault**
 check if the modal view has to open for the user (return string)
 
 ```twig
-{% if fncookieconsent_isCookieConsentOpenByDefault(string current_route, array disabled_routes) == 'true' %}
+{% if cbcookieconsent_isCookieConsentOpenByDefault(string current_route, array disabled_routes) == 'true' %}
     ...
 {% endif %}
 ```
