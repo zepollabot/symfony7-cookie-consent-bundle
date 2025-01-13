@@ -2,65 +2,34 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the ConnectHolland CookieConsentBundle package.
- * (c) Connect Holland.
- */
-
 namespace Chanondb\CookieConsentBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="fn_cookieconsent_log")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "fn_cookieconsent_log")]
 class CookieConsentLog
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @var int
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    private int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    protected $ipAddress;
+    #[ORM\Column(type: "string", length: 255)]
+    private string $ipAddress;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    protected $cookieConsentKey;
+    #[ORM\Column(type: "string", length: 255)]
+    private string $cookieConsentKey;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    protected $cookieName;
+    #[ORM\Column(type: "string", length: 255)]
+    private string $cookieName;
 
-    /**
-     * @ORM\Column(type="boolean")
-     *
-     * @var bool
-     */
-    protected $cookieValue;
+    #[ORM\Column(type: "boolean")]
+    private bool $cookieValue;
 
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var DateTime
-     */
-    protected $timestamp;
+    #[ORM\Column(type: "datetime")]
+    private DateTime $timestamp;
 
     public function getId(): int
     {
