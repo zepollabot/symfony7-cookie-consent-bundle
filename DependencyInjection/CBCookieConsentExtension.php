@@ -2,18 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the ConnectHolland CookieConsentBundle package.
- * (c) Connect Holland.
- */
-
 namespace Chanondb\CookieConsentBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Attribute\AsExtension;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
+#[AsExtension(name: 'cb_cookie_consent')]
 class CBCookieConsentExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
