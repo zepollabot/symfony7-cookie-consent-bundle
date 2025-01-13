@@ -63,9 +63,9 @@ class CookieConsentType extends AbstractType
             ]);
         }
 
-        $builder->add('save', SubmitType::class, ['label' => 'cb_cookie_consent.save', 'attr' => ['class' => 'btn fn-cookie-consent__btn']]);
-        $builder->add('use_only_functional_cookies', SubmitType::class, ['label' => 'cb_cookie_consent.use_only_functional_cookies', 'attr' => ['class' => 'btn fn-cookie-consent__btn']]);
-        $builder->add('use_all_cookies', SubmitType::class, ['label' => 'cb_cookie_consent.use_all_cookies', 'attr' => ['class' => 'btn fn-cookie-consent__btn fn-cookie-consent__btn--secondary']]);
+        $builder->add('save', SubmitType::class, ['label' => 'cb_cookie_consent.save', 'attr' => ['class' => 'btn cb-cookie-consent__btn']]);
+        $builder->add('use_only_functional_cookies', SubmitType::class, ['label' => 'cb_cookie_consent.use_only_functional_cookies', 'attr' => ['class' => 'btn cb-cookie-consent__btn']]);
+        $builder->add('use_all_cookies', SubmitType::class, ['label' => 'cb_cookie_consent.use_all_cookies', 'attr' => ['class' => 'btn cb-cookie-consent__btn cb-cookie-consent__btn--secondary']]);
 
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
             $data = $event->getData();

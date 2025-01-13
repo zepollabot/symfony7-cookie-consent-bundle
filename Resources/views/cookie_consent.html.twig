@@ -4,29 +4,29 @@
     <script type="text/javascript" src="{{ asset('bundles/fncookieconsent/js/cookie_consent.js') }}"></script>
 {% endblock %}
 
-<div id="cookieconsent" class="modal fn-cookie-consent" tabindex="-1" data-fn-open="{{ fncookieconsent_isCookieConsentOpenByDefault(app.request.get('route'), disabled_routes) }}" {{ stimulus_target('cookie_consent_modal', 'open') }}>
+<div id="cookieconsent" class="modal cb-cookie-consent" tabindex="-1" data-cb-open="{{ fncookieconsent_isCookieConsentOpenByDefault(app.request.get('route'), disabled_routes) }}" {{ stimulus_target('cookie_consent_modal', 'open') }}>
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             {% block title %}
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold fn-cookie-consent__title">{{ 'cb_cookie_consent.title'|trans({}, 'CBCookieConsentBundle') }}</h5>
+                    <h5 class="modal-title fw-bold cb-cookie-consent__title">{{ 'cb_cookie_consent.title'|trans({}, 'CBCookieConsentBundle') }}</h5>
                 </div>
             {% endblock %}
             <div class="modal-body">
                 {% block intro %}
-                    <p class="fn-cookie-consent__intro">{{ 'cb_cookie_consent.intro'|trans({}, 'CBCookieConsentBundle') }}</p>
+                    <p class="cb-cookie-consent__intro">{{ 'cb_cookie_consent.intro'|trans({}, 'CBCookieConsentBundle') }}</p>
                 {% endblock %}
 
                 {% block read_more %}
                     {% if 'cb_cookie_consent.privacy_route'|trans({}, 'CBCookieConsentBundle') %}
-                        <a class="btn btn-link text-decoration-none fn-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cb_cookie_consent.privacy_route'|trans({}, 'CBCookieConsentBundle')) }}{% endblock %}">{{ 'cb_cookie_consent.read_more'|trans({}, 'CBCookieConsentBundle') }}</a>
+                        <a class="btn btn-link text-decoration-none cb-cookie-consent__read-more" href="{% block read_more_link %}{{ path('cb_cookie_consent.privacy_route'|trans({}, 'CBCookieConsentBundle')) }}{% endblock %}">{{ 'cb_cookie_consent.read_more'|trans({}, 'CBCookieConsentBundle') }}</a>
                     {% else %}
                         <p>{{ 'cb_cookie_consent.read_more'|trans({}, 'CBCookieConsentBundle') }}</p>
                     {% endif %}
                 {% endblock %}
 
-                {{ form_start(form, {'attr': {'class': 'mt-4 fn-cookie-consent__form'}}) }}
-                    <div class="d-flex border-top border-bottom border-dark fn-cookie-consent__category-group">
+                {{ form_start(form, {'attr': {'class': 'mt-4 cb-cookie-consent__form'}}) }}
+                    <div class="d-flex border-top border-bottom border-dark cb-cookie-consent__category-group">
                         <div class="row">
                             {% for child in form %}
                                 {% if child.vars.block_prefixes[0] != 'button' %}
@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-end my-3 fn-cookie-consent__btn-group">
+                    <div class="d-flex justify-content-end my-3 cb-cookie-consent__btn-group">
                         {{ form_rest(form) }}
                     </div>
                 {{ form_end(form) }}

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var cookieConsentForm = document.querySelector('.fn-cookie-consent__form')
-  var cookieConsentFormBtn = document.querySelectorAll('.fn-cookie-consent__btn')
+  var cookieConsentForm = document.querySelector('.cb-cookie-consent__form')
+  var cookieConsentFormBtn = document.querySelectorAll('.cb-cookie-consent__btn')
 
   if (cookieConsentForm) {
     // Submit form via ajax
