@@ -45,7 +45,7 @@
       "/Tests/"
     ],
     "psr-4": {
-      "Chanondb\\CookieConsentBundle\\": ""
+      "Chanondb\\CookieConsentBundle\\": "src/"
     }
   },
   "autoload-dev": {
