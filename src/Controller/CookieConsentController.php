@@ -10,37 +10,22 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Twig\Environment;
 
 class CookieConsentController
 {
-    private Environment $twigEnvironment;
-    private FormFactoryInterface $formFactory;
-    private CookieChecker $cookieChecker;
-    private RouterInterface $router;
-    private TranslatorInterface $translator;
-    private ?string $formAction;
-    private array $disabledRoutes;
-
     public function __construct(
-        Environment $twigEnvironment,
-        FormFactoryInterface $formFactory,
-        CookieChecker $cookieChecker,
-        RouterInterface $router,
-        TranslatorInterface $translator,
-        ?string $formAction = null,
-        array $cookieConsentDisabledRoutes = []
+        private readonly Environment $twigEnvironment,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly CookieChecker $cookieChecker,
+        private readonly RouterInterface $router,
+        private readonly LocaleAwareInterface $translator,
+        private readonly ?string $formAction = null,
+        private readonly array $cookieConsentDisabledRoutes = [],
     ) {
-        $this->twigEnvironment = $twigEnvironment;
-        $this->formFactory = $formFactory;
-        $this->cookieChecker = $cookieChecker;
-        $this->router = $router;
-        $this->translator = $translator;
-        $this->formAction = $formAction;
-        $this->disabledRoutes = $cookieConsentDisabledRoutes;
     }
 
     #[Route('/cookie_consent', name: 'cookie_consent.show')]
@@ -51,11 +36,10 @@ class CookieConsentController
         $response = new Response(
             $this->twigEnvironment->render('@CookieConsent/cookie_consent.html.twig', [
                 'form' => $this->createCookieConsentForm()->createView(),
-                'disabled_routes' => $this->disabledRoutes,
+                'disabled_routes' => $this->cookieConsentDisabledRoutes,
             ])
         );
 
-        // Cache in ESI should not be shared
         $response->setPrivate();
         $response->setMaxAge(0);
 
@@ -87,10 +71,10 @@ class CookieConsentController
 
     protected function setLocale(Request $request): void
     {
-        $locale = $request->get('locale');
-        if (!empty($locale)) {
-            $this->translator->setLocale($locale);
-            $request->setLocale($locale);
+        $locale = $request->attributes->get('_locale') ?? $request->getLocale();
+        if ($locale !== '') {
+            $this->translator->setLocale((string) $locale);
+            $request->setLocale((string) $locale);
         }
     }
 }

@@ -16,61 +16,31 @@ use Chanondb\CookieConsentBundle\Form\CookieConsentType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class CookieConsentFormSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var CookieLogger
-     */
-    private $cookieLogger;
-
-    /**
-     * @var CookieHandler
-     */
-    private $cookieHandler;
-
-    /**
-     * @var bool
-     */
-    private $useLogger;
-
-    public function __construct(FormFactoryInterface $formFactory, CookieLogger $cookieLogger, CookieHandler $cookieHandler, bool $useLogger)
-    {
-        $this->formFactory   = $formFactory;
-        $this->cookieLogger  = $cookieLogger;
-        $this->cookieHandler = $cookieHandler;
-        $this->useLogger     = $useLogger;
+    public function __construct(
+        private readonly FormFactoryInterface $formFactory,
+        private readonly CookieLogger $cookieLogger,
+        private readonly CookieHandler $cookieHandler,
+        private readonly bool $useLogger,
+    ) {
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-           KernelEvents::RESPONSE => ['onResponse'],
+            KernelEvents::RESPONSE => ['onResponse', 0],
         ];
     }
 
-    /**
-     * Checks if form has been submitted and saves users preferences in cookies by calling the CookieHandler.
-     */
-    public function onResponse(KernelEvent $event): void
+    public function onResponse(ResponseEvent $event): void
     {
-        if ($event instanceof FilterResponseEvent === false && $event instanceof ResponseEvent === false) {
-            throw new \RuntimeException('No ResponseEvent class found');
-        }
-
-        $request  = $event->getRequest();
+        $request = $event->getRequest();
         $response = $event->getResponse();
 
         $form = $this->createCookieConsentForm();
@@ -81,9 +51,6 @@ class CookieConsentFormSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * Handle form submit.
-     */
     protected function handleFormSubmit(array $categories, Request $request, Response $response): void
     {
         $cookieConsentKey = $this->getCookieConsentKey($request);
@@ -95,17 +62,11 @@ class CookieConsentFormSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     *  Return existing key from cookies or create new one.
-     */
     protected function getCookieConsentKey(Request $request): string
     {
-        return $request->cookies->get(CookieNameEnum::COOKIE_CONSENT_KEY_NAME) ?? uniqid();
+        return $request->cookies->get(CookieNameEnum::COOKIE_CONSENT_KEY_NAME) ?? uniqid('', true);
     }
 
-    /**
-     * Create cookie consent form.
-     */
     protected function createCookieConsentForm(): FormInterface
     {
         return $this->formFactory->create(CookieConsentType::class);

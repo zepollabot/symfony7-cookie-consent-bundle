@@ -5,25 +5,39 @@ services:
     autowire: true
     autoconfigure: true
     public: false
-    bind:
-      $cookieCategories: '%cookie_consent.categories%'
-      $useLogger: '%cookie_consent.use_logger%'
-      $httpOnly: '%cookie_consent.http_only%'
-      $formAction: '%cookie_consent.form_action%'
-      $csrfProtection: '%cookie_consent.csrf_protection%'
-      $cookieConsentDisabledRoutes: '%cookie_consent.disabled_routes%'
 
   Chanondb\CookieConsentBundle\:
     resource: '../../'
-    exclude: '../../{DependencyInjection,Entity,Tests,Kernel.php}'
+    exclude: '../../{DependencyInjection,Entity,Tests,Kernel.php,Controller}'
 
   Chanondb\CookieConsentBundle\Controller\:
     resource: '../../Controller/*'
     public: true
 
+  Chanondb\CookieConsentBundle\Controller\CookieConsentController:
+    arguments:
+      $formAction: '%cookie_consent.form_action%'
+      $cookieConsentDisabledRoutes: '%cookie_consent.disabled_routes%'
+
   Chanondb\CookieConsentBundle\Cookie\CookieChecker:
-    arguments: ["@=service('request_stack').getCurrentRequest()"]
+    arguments:
+      $request: '@=service("request_stack").getCurrentRequest()'
 
   Chanondb\CookieConsentBundle\Cookie\CookieLogger:
     arguments:
-      $request: "@=service('request_stack').getCurrentRequest()"
+      $request: '@=service("request_stack").getCurrentRequest()'
+      $cookieCategories: '%cookie_consent.categories%'
+
+  Chanondb\CookieConsentBundle\Cookie\CookieHandler:
+    arguments:
+      $httpOnly: '%cookie_consent.http_only%'
+      $cookieCategories: '%cookie_consent.categories%'
+
+  Chanondb\CookieConsentBundle\Form\CookieConsentType:
+    arguments:
+      $cookieCategories: '%cookie_consent.categories%'
+      $csrfProtection: '%cookie_consent.csrf_protection%'
+
+  Chanondb\CookieConsentBundle\EventSubscriber\CookieConsentFormSubscriber:
+    arguments:
+      $useLogger: '%cookie_consent.use_logger%'

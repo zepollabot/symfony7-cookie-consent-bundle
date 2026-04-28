@@ -17,41 +17,38 @@ use Symfony\Component\HttpFoundation\Request;
 class CookieLogger
 {
     /**
-     * @var EntityManagerInterface
+     * @param list<string> $cookieCategories
      */
-    private $entityManager;
-
-    /**
-     * @var Request|null
-     */
-    private $request;
-
-    public function __construct(ManagerRegistry $registry, ?Request $request)
-    {
-        $this->entityManager = $registry->getManagerForClass(CookieConsentLog::class);
-        $this->request       = $request;
+    public function __construct(
+        private readonly ManagerRegistry $registry,
+        private readonly ?Request $request,
+        private readonly array $cookieCategories,
+    ) {
     }
 
-    /**
-     * Logs users preferences in database.
-     */
     public function log(array $categories, string $key): void
     {
         if ($this->request === null) {
             throw new \RuntimeException('No request found');
         }
 
+        $entityManager = $this->registry->getManagerForClass(CookieConsentLog::class)
+            ?? $this->registry->getManager();
+
         $ip = $this->anonymizeIp($this->request->getClientIp());
 
         foreach ($categories as $category => $value) {
-            $boolValue = $value == 'true' ? true : false;
-            $this->persistCookieConsentLog($category, $boolValue, $ip, $key);
+            if (!\is_string($category) || !\in_array($category, $this->cookieCategories, true)) {
+                continue;
+            }
+            $boolValue = $value === 'true' || $value === true;
+            $this->persistCookieConsentLog($entityManager, $category, $boolValue, $ip, $key);
         }
 
-        $this->entityManager->flush();
+        $entityManager->flush();
     }
 
-    protected function persistCookieConsentLog(string $category, bool $value, string $ip, string $key): void
+    protected function persistCookieConsentLog(EntityManagerInterface $entityManager, string $category, bool $value, string $ip, string $key): void
     {
         $cookieConsentLog = (new CookieConsentLog())
             ->setIpAddress($ip)
@@ -60,20 +57,20 @@ class CookieLogger
             ->setCookieValue($value)
             ->setTimestamp(new \DateTime());
 
-        $this->entityManager->persist($cookieConsentLog);
+        $entityManager->persist($cookieConsentLog);
     }
 
-    /**
-     * GDPR required IP addresses to be saved anonymized.
-     */
     protected function anonymizeIp(?string $ip): string
     {
         if ($ip === null) {
             return 'unknown';
         }
 
-        $lastDot = strrpos($ip, '.') + 1;
+        $lastDot = strrpos($ip, '.');
+        if ($lastDot === false) {
+            return 'unknown';
+        }
 
-        return substr($ip, 0, $lastDot).str_repeat('x', strlen($ip) - $lastDot);
+        return substr($ip, 0, $lastDot + 1).str_repeat('x', \strlen($ip) - $lastDot - 1);
     }
 }

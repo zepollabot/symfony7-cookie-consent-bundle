@@ -8,30 +8,30 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: "cookieconsent_log")]
+#[ORM\Table(name: 'cookieconsent_log')]
 class CookieConsentLog
 {
     #[ORM\Id]
-    #[ORM\Column(type: "integer")]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
-    private int $id;
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    private ?int $id = null;
 
-    #[ORM\Column(type: "string", length: 255)]
-    private string $ipAddress;
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $ipAddress = '';
 
-    #[ORM\Column(type: "string", length: 255)]
-    private string $cookieConsentKey;
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $cookieConsentKey = '';
 
-    #[ORM\Column(type: "string", length: 255)]
-    private string $cookieName;
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $cookieName = '';
 
-    #[ORM\Column(type: "boolean")]
-    private bool $cookieValue;
+    #[ORM\Column(type: 'boolean')]
+    private bool $cookieValue = false;
 
-    #[ORM\Column(type: "datetime")]
-    private DateTime $timestamp;
+    #[ORM\Column(type: 'datetime')]
+    private ?DateTime $timestamp = null;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -91,7 +91,7 @@ class CookieConsentLog
         return $this;
     }
 
-    public function getTimestamp(): DateTime
+    public function getTimestamp(): ?DateTime
     {
         return $this->timestamp;
     }
