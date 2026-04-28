@@ -16,23 +16,17 @@
 {% endblock %}
 
 {% block checkbox_row %}
-    <div class="cb-cookie-consent__category col-3 py-3">
+    <div class="cb-cookie-consent__category col-12 col-sm-6 col-lg-3">
         <div{% with {attr: row_attr|merge({class: (row_attr.class|default('mb-3') ~ ' text-center')|trim})} %}{{ block('attributes') }}{% endwith %}>
-            <label class="cb-cookie-consent__category-title fs-4" for="cookie_consent_{{ name }}">{{ ('cookie_consent.'~name~'.title')|trans({}, 'CookieConsentBundle') }}</label>
-            <div class="d-flex justify-content-center">
-                <div></div>
-                <div>
-                    {{- form_row(form, {
-                        attr: {
-                            class: 'mt-1 fs-4'
-                        },
-                        row_attr: {
-                            class: 'form-switch'
-                        }
-                    }) -}}
-                </div>
-                <div></div>
-            </div>
+            <label class="cb-cookie-consent__category-title fs-5" for="cookie_consent_{{ name }}">{{ ('cookie_consent.'~name~'.title')|trans({}, 'CookieConsentBundle') }}</label>
+            {{- form_row(form, {
+                attr: {
+                    class: 'mt-1'
+                },
+                row_attr: {
+                    class: 'form-switch d-flex justify-content-center'
+                }
+            }) -}}
         </div>
         <div class="cb-cookie-consent__category-information px-1">
             <small class="cb-cookie-consent__category-description"><label for="cookie_consent_{{ name }}">{{ ('cookie_consent.'~name~'.description')|trans({}, 'CookieConsentBundle') }}</label></small>

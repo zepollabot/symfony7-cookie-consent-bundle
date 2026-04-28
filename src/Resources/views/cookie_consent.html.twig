@@ -26,8 +26,8 @@
                 {% endblock %}
 
                 {{ form_start(form, {'attr': {'class': 'mt-4 cb-cookie-consent__form'}}) }}
-                    <div class="d-flex border-top border-bottom border-dark cb-cookie-consent__category-group">
-                        <div class="row">
+                    <div class="cb-cookie-consent__category-group">
+                        <div class="row cb-cookie-consent__category-row">
                             {% for child in form %}
                                 {% if child.vars.block_prefixes[0] != 'button' %}
                                     {{ form_row(child) }}
